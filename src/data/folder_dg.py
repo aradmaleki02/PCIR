@@ -70,6 +70,7 @@ class FolderDg(Folder):
             yml_folder = path.parent
             if path.name != "dataset":
                 raise NotADirectoryError("If the data doesn't exist, the root must end with 'dataset'")
+            print(yml_folder, path)
             generate_env_and_labels(yml_folder)
         super().setup(stage)
         self.train_data.set_env_labels()
