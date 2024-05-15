@@ -210,7 +210,9 @@ def train_and_test(config):
     model = load_model(config)
     print(model)
     print('================')
-    print(datamodule.train_data)
+    print(datamodule.train_data.normal_dir)
+    print(datamodule.train_data.normal_test_dir)
+    print(datamodule.train_data.abnormal_dir)
 
     experiment_logger = get_experiment_logger(config)
 
