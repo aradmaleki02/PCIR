@@ -209,8 +209,9 @@ def train_and_test(config):
     model = load_model(config)
     print(model)
     experiment_logger = get_experiment_logger(config)
-    callbacks = _get_callbacks(config)
     print('!!!!!!!1')
+
+    callbacks = _get_callbacks(config)
     trainer = Trainer(**config.trainer, logger=experiment_logger, callbacks=callbacks)
     logger.info("Training the model.")
     trainer.fit(model=model, datamodule=datamodule)
