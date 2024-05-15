@@ -204,9 +204,10 @@ def train_and_test(config):
     config = preprocess_config(config)
     if config.project.get("seed") is not None:
         seed_everything_at_once(config.project.seed)
-    dataset_format = config.dataset.format.lower()
-    datamodule = load_data_module(config, dataset_format)
+    # dataset_format = config.dataset.format.lower()
+    # datamodule = load_data_module(config, dataset_format)
     model = load_model(config)
+    print(model)
     experiment_logger = get_experiment_logger(config)
     callbacks = _get_callbacks(config)
     trainer = Trainer(**config.trainer, logger=experiment_logger, callbacks=callbacks)
