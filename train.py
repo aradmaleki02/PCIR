@@ -204,11 +204,11 @@ def train_and_test(config):
     config = preprocess_config(config)
     if config.project.get("seed") is not None:
         seed_everything_at_once(config.project.seed)
-    # dataset_format = config.dataset.format.lower()
-    # datamodule = load_data_module(config, dataset_format)
+    dataset_format = config.dataset.format.lower()
+    print(dataset_format)
+    datamodule = load_data_module(config, dataset_format)
     model = load_model(config)
     print(model)
-    print('!!!!!!!1')
 
     experiment_logger = get_experiment_logger(config)
     print('!!!!!!!1')
@@ -246,7 +246,9 @@ def load_data_module(config, dataset_format):
         init_params = {key: config.dataset[key] if key in config.dataset else None for key in FolderDg.get_init_args()}
         datamodule = FolderDg(**init_params)
     elif dataset_format == "wilds":
+        print('bef')
         wilds_dataset = wilds.get_dataset(dataset=config.dataset.name, download=True)
+        print('aft')
         grouper = CombinatorialGrouper(wilds_dataset, config.dataset.grouper.groupby_fields)
         params = config.dataset
         if "subsample_ratio" in params:
