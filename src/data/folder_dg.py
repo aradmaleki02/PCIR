@@ -38,7 +38,10 @@ class FolderDgDataset(FolderDataset):
 
     def _set_env_labels(self, dir_path):
         path = Path(self.root) / dir_path
+        print(path)
         path_to_env_labels = path.parent / "env_label.csv"
+        print(path_to_env_labels)
+        print(torch.tensor(pd.read_csv(path_to_env_labels)['label']))
         return torch.tensor(pd.read_csv(path_to_env_labels)['label'])
 
     @classmethod
