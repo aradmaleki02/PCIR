@@ -208,6 +208,8 @@ def train_and_test(config):
     # datamodule = load_data_module(config, dataset_format)
     model = load_model(config)
     print(model)
+    print('!!!!!!!1')
+
     experiment_logger = get_experiment_logger(config)
     print('!!!!!!!1')
 
