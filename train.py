@@ -244,6 +244,7 @@ def load_model(config):
 def load_data_module(config, dataset_format):
     if dataset_format == "folderdg":
         init_params = {key: config.dataset[key] if key in config.dataset else None for key in FolderDg.get_init_args()}
+        print(init_params)
         datamodule = FolderDg(**init_params)
     elif dataset_format == "wilds":
         print('bef')
